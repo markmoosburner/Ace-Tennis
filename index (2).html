@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>ACE TENNIS — Mark Moosburner | North County San Diego</title>
+  <meta name="description" content="Book a tennis lesson with Mark Moosburner — 30+ years experience, 2x PA State Champion. Carlsbad, Oceanside & Encinitas, CA.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Share+Tech+Mono&family=Teko:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:    #1a5c2a;
+      --green2:   #27ae60;
+      --green3:   #0f3d1c;
+      --green4:   #071a0c;
+      --lime:     #00ff6a;
+      --yellow:   #e8d44d;
+      --red:      #c0392b;
+      --red2:     #a93226;
+      --cream:    #f7f3ea;
+      --offwhite: #ede8db;
+      --dark:     #0d0d0d;
+      --mid:      #2a2a2a;
+      --muted:    #666;
+      --border:   #2a4a30;
+      --card-bg:  #111a13;
+      --radius:   2px;
+    }
+
+    html { background: var(--dark); scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Share Tech Mono', monospace;
+      background: var(--dark);
+      color: #ccc;
+      font-size: 13px;
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    /* ─── SCANLINE OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.08) 2px,
+        rgba(0,0,0,0.08) 4px
+      );
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ─── WRAPPER ─── */
+    .site { max-width: 480px; margin: 0 auto; background: var(--dark); min-height: 100vh; }
+
+    /* ─── HEADER ─── */
+    .header {
+      background: var(--green4);
+      border-bottom: 3px solid var(--yellow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      padding: 12px 18px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo-eyebrow {
+      font-family: 'Oswald', sans-serif;
+      font-size: 8px;
+      letter-spacing: 4px;
+      color: var(--yellow);
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+    .logo-main {
+      font-family: 'Teko', sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+      letter-spacing: 2px;
+      text-shadow: 0 0 20px rgba(0,255,106,0.3);
+    }
+    .logo-sub {
+      font-size: 8px;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .header-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+    .badge-ring {
+      width: 44px;
+      height: 44px;
+      border: 2px solid var(--yellow);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .badge-ring::before {
+      content: '';
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #c8e620, #8aad00);
+      display: block;
+      box-shadow: 0 0 8px rgba(200,230,32,0.5);
+    }
+    .badge-ring::after {
+      content: '';
+      position: absolute;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: transparent;
+      border: 1.2px solid rgba(255,255,255,0.5);
+      clip-path: ellipse(38% 50% at 30% 50%);
+    }
+
+    /* ─── NAV ─── */
+    .tab-bar {
+      display: flex;
+      background: #050d07;
+      border-bottom: 2px solid var(--red);
+    }
+    .tab {
+      flex: 1;
+      padding: 11px 2px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: all .2s;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+    }
+    .tab:hover { color: rgba(255,255,255,0.6); }
+    .tab.on { color: var(--yellow); border-bottom-color: var(--yellow); }
+
+    /* ─── PAGES ─── */
+    .page { display: none; padding: 18px; }
+    .page.on { display: block; }
+
+    /* ─── SHARED ─── */
+    .sec-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: var(--red);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid rgba(192,57,43,0.3);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sec-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(192,57,43,0.3), transparent);
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(0,255,106,0.2), transparent);
+    }
+
+    .step-tag {
+      font-family: 'Oswald', sans-serif;
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    /* ─── STEP NAV ─── */
+    .step-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .step-dots { display: flex; gap: 5px; align-items: center; }
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--border); transition: background .2s; }
+    .dot.on { background: var(--red); box-shadow: 0 0 6px rgba(192,57,43,0.6); }
+    .step-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .next-btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--green);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      font-family: 'Oswald', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all .2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .next-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.08), transparent);
+    }
+    .next-btn:hover { background: #1e6e32; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.4); }
+
+    .back-btn {
+      padding: 8px 14px;
+      background: transparent;
+      color: rgba(255,255,255,0.4);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-family: 'Oswald', sans-serif;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all .15s;
+    }
+    .back-btn:hover { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.2); }
+
+    /* ─── AGE GRID ─── */
+    .age-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .age-btn {
+      padding: 14px 6px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.02);
+      cursor: pointer;
+      text-align: center;
+      transition: all .15s;
+    }
+    .age-btn:hover { border-color: rgba(0,255,106,0.3); background: rgba(0,255,106,0.04); }
+    .age-label {
+      font-family: 'Teko', sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      display: block;
+      line-height: 1;
+      color: #ddd;
+    }
+    .age-range { font-size: 9px; color: var(--muted); display: block; margin-top: 3px; letter-spacing: 1px; }
+    .age-btn.on { border-color: var(--lime); background: rgba(0,255,106,0.06); }
+    .age-btn.on .age-label { color: var(--lime); }
+    .age-btn.on .age-range { color: rgba(0,255,106,0.6); }
+
+    /* ─── LEVEL SLIDER ─── */
+    .level-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+    .level-num {
+      font-family: 'Teko', sans-serif;
+      font-size: 58px;
+      font-weight: 700;
+      color: var(--red);
+      line-height: 1;
+      min-width: 42px;
+      text-shadow: 0 0 20px rgba(192,57,43,0.5);
+    }
+    .level-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #eee;
+    }
+    .level-desc { font-size: 11px; color: var(--muted); margin-top: 4px; line-height: 1.5; }
+    input[type=range] {
+      width: 100%;
+      accent-color: var(--red);
+      cursor: pointer;
+      height: 4px;
+    }
+    .slider-ticks {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 5px;
+      padding: 0 1px;
+    }
+    .tick {
+      font-size: 9px;
+      color: rgba(255,255,255,0.25);
+      font-family: 'Oswald', sans-serif;
+    }
+
+    /* ─── SESSION TYPE ─── */
+    .type-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .type-btn {
+      padding: 16px 10px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.02);
+      cursor: pointer;
+      text-align: center;
+      transition: all .15s;
+    }
+    .type-btn:hover { border-color: rgba(232,212,77,0.4); background: rgba(232,212,77,0.03); }
+    .type-icon { font-size: 24px; display: block; margin-bottom: 6px; }
+    .type-name { font-family: 'Oswald', sans-serif; font-size: 14px; font-weight: 600; display: block; color: #ddd; }
+    .type-sub { font-size: 10px; color: var(--muted); display: block; margin-top: 3px; }
+    .type-btn.on { border-color: var(--yellow); background: rgba(232,212,77,0.05); }
+    .type-btn.on .type-name { color: var(--yellow); }
+    .type-btn.on .type-icon { filter: drop-shadow(0 0 4px rgba(232,212,77,0.6)); }
+
+    /* ─── PERSONAL NOTE ─── */
+    .form-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .form-input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 13px;
+      background: rgba(255,255,255,0.03);
+      color: #ddd;
+      outline: none;
+      transition: border-color .15s;
+      -webkit-appearance: none;
+    }
+    .form-input:focus { border-color: rgba(0,255,106,0.4); }
+    .form-input::placeholder { color: rgba(255,255,255,0.2); }
+    textarea.form-input { resize: vertical; min-height: 80px; }
+
+    /* ─── DATE PICKER ─── */
+    .day-scroll {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      margin-bottom: 14px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .day-scroll::-webkit-scrollbar { display: none; }
+    .day-btn {
+      min-width: 52px;
+      padding: 9px 4px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.02);
+      cursor: pointer;
+      text-align: center;
+      flex-shrink: 0;
+      transition: all .15s;
+    }
+    .day-btn:hover { border-color: rgba(0,255,106,0.3); }
+    .day-dname { font-family: 'Oswald', sans-serif; font-size: 9px; color: var(--muted); display: block; text-transform: uppercase; letter-spacing: 1px; }
+    .day-dnum { font-family: 'Teko', sans-serif; font-size: 26px; font-weight: 600; line-height: 1; display: block; color: #ddd; }
+    .day-mon { font-size: 9px; color: var(--muted); display: block; }
+    .day-btn.on { border-color: var(--lime); background: rgba(0,255,106,0.06); }
+    .day-btn.on .day-dname { color: rgba(0,255,106,0.7); }
+    .day-btn.on .day-dnum { color: var(--lime); }
+    .day-btn.on .day-mon { color: rgba(0,255,106,0.6); }
+
+    /* ─── DURATION ─── */
+    .dur-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+    .dur-btn {
+      padding: 14px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.02);
+      cursor: pointer;
+      text-align: center;
+      transition: all .15s;
+    }
+    .dur-btn:hover { border-color: rgba(232,212,77,0.3); }
+    .dur-hr { font-family: 'Teko', sans-serif; font-size: 26px; font-weight: 700; display: block; line-height: 1; color: #ddd; }
+    .dur-price { font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 600; color: var(--lime); display: block; margin-top: 4px; }
+    .dur-save { font-size: 10px; color: var(--muted); display: block; margin-top: 3px; }
+    .dur-btn.on { border-color: var(--yellow); background: rgba(232,212,77,0.05); }
+    .dur-btn.on .dur-hr { color: var(--yellow); }
+
+    /* ─── TIME GRID ─── */
+    .time-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
+    .time-btn {
+      padding: 10px 6px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.02);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 12px;
+      cursor: pointer;
+      text-align: center;
+      transition: all .15s;
+      color: #bbb;
+    }
+    .time-btn:hover { border-color: rgba(192,57,43,0.4); color: #ddd; }
+    .time-btn.on { border-color: var(--red); background: rgba(192,57,43,0.1); color: var(--red); font-weight: 700; box-shadow: 0 0 8px rgba(192,57,43,0.2); }
+
+    /* ─── SUMMARY ─── */
+    .summary-box {
+      background: var(--green4);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      margin-bottom: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+    .summary-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(to right, transparent, var(--lime), transparent);
+      opacity: 0.3;
+    }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 12px;
+      gap: 10px;
+    }
+    .summary-row:last-child { border: none; padding-top: 10px; margin-top: 4px; }
+    .s-label { color: rgba(255,255,255,0.4); font-family: 'Oswald', sans-serif; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; }
+    .s-val { color: #ddd; text-align: right; font-size: 11px; }
+    .price-total { font-family: 'Teko', sans-serif; font-size: 34px; font-weight: 700; color: var(--yellow); text-shadow: 0 0 12px rgba(232,212,77,0.4); }
+
+    /* ─── BOOK BUTTON ─── */
+    .book-btn {
+      width: 100%;
+      padding: 16px;
+      background: var(--red);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      font-family: 'Oswald', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all .2s;
+      position: relative;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+    .book-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.1), transparent);
+    }
+    .book-btn:hover { background: var(--red2); transform: translateY(-1px); box-shadow: 0 4px 20px rgba(192,57,43,0.4); }
+
+    /* ─── NOTICE ─── */
+    .notice {
+      background: rgba(232,212,77,0.05);
+      border: 1px solid rgba(232,212,77,0.2);
+      border-radius: var(--radius);
+      padding: 10px 12px;
+      font-size: 11px;
+      color: rgba(232,212,77,0.7);
+      margin-bottom: 12px;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      line-height: 1.6;
+    }
+
+    /* ─── SUCCESS ─── */
+    .success-box {
+      background: rgba(0,255,106,0.05);
+      border: 1.5px solid rgba(0,255,106,0.3);
+      border-radius: var(--radius);
+      padding: 22px;
+      text-align: center;
+      display: none;
+      margin-top: 12px;
+    }
+    .success-icon { font-size: 40px; display: block; margin-bottom: 10px; }
+    .success-title { font-family: 'Teko', sans-serif; font-size: 32px; font-weight: 700; color: var(--lime); text-shadow: 0 0 16px rgba(0,255,106,0.4); }
+    .success-sub { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 8px; line-height: 1.8; }
+    .success-email { color: var(--lime); }
+
+    /* ─── PROFILE PAGE ─── */
+    .profile-hero {
+      background: linear-gradient(135deg, var(--green4) 0%, #0a2410 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 14px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .profile-hero::before {
+      content: '';
+      position: absolute;
+      top: -30px; right: -30px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,255,106,0.06), transparent 70%);
+    }
+    .avatar {
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #c8e620, #5a6e00);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Teko', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #0a1a0e;
+      flex-shrink: 0;
+      border: 2px solid rgba(255,255,255,0.15);
+      box-shadow: 0 0 16px rgba(0,255,106,0.2);
+    }
+    .profile-name { font-family: 'Teko', sans-serif; font-size: 30px; font-weight: 700; color: #fff; line-height: 1; }
+    .profile-title { font-size: 9px; color: var(--yellow); letter-spacing: 2px; text-transform: uppercase; font-family: 'Oswald', sans-serif; margin-top: 3px; }
+    .profile-usta { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 5px; }
+
+    .stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 14px; }
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--red), transparent);
+      opacity: 0.5;
+    }
+    .stat-val { font-family: 'Teko', sans-serif; font-size: 34px; font-weight: 700; color: var(--red); line-height: 1; text-shadow: 0 0 12px rgba(192,57,43,0.3); }
+    .stat-lbl { font-size: 9px; color: rgba(255,255,255,0.35); font-family: 'Oswald', sans-serif; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 4px; }
+
+    .bio-text { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.9; }
+
+    .pill-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+    .pill {
+      background: rgba(0,255,106,0.07);
+      color: rgba(0,255,106,0.8);
+      font-family: 'Oswald', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      padding: 5px 10px;
+      border-radius: 1px;
+      text-transform: uppercase;
+      border: 1px solid rgba(0,255,106,0.2);
+    }
+
+    .pricing-row { display: flex; gap: 8px; }
+    .price-card {
+      flex: 1;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      text-align: center;
+    }
+    .price-card.best { border-color: rgba(232,212,77,0.4); background: rgba(232,212,77,0.03); }
+    .price-big { font-family: 'Teko', sans-serif; font-size: 36px; font-weight: 700; color: var(--lime); text-shadow: 0 0 10px rgba(0,255,106,0.3); }
+    .price-hr { font-family: 'Oswald', sans-serif; font-size: 10px; color: rgba(255,255,255,0.35); letter-spacing: 1.5px; text-transform: uppercase; }
+    .price-tag { font-size: 9px; color: var(--yellow); margin-top: 4px; font-family: 'Oswald', sans-serif; letter-spacing: 1px; }
+
+    /* ─── CONTACT PAGE ─── */
+    .contact-link { text-decoration: none; display: block; margin-bottom: 8px; }
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: border-color .15s;
+    }
+    .contact-link:hover .contact-row { border-color: rgba(0,255,106,0.3); }
+    .contact-icon { font-size: 20px; flex-shrink: 0; }
+    .contact-lbl { font-family: 'Oswald', sans-serif; font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.3); display: block; }
+    .contact-val { font-size: 13px; color: #ddd; }
+
+    /* ─── CONTACT FORM ─── */
+    .form-group { margin-bottom: 12px; }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      background: #050d07;
+      color: rgba(255,255,255,0.2);
+      text-align: center;
+      padding: 16px;
+      font-size: 9px;
+      letter-spacing: 2px;
+      font-family: 'Oswald', sans-serif;
+      text-transform: uppercase;
+      border-top: 1px solid var(--border);
+      margin-top: 8px;
+    }
+
+    /* ─── TICKER BAR ─── */
+    .ticker {
+      background: var(--red);
+      padding: 5px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .ticker-inner {
+      display: inline-block;
+      animation: ticker 18s linear infinite;
+      font-family: 'Oswald', sans-serif;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: #fff;
+      text-transform: uppercase;
+    }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ─── LOCATION SECTION ─── */
+    .loc-list { display: flex; flex-direction: column; gap: 6px; }
+    .loc-btn {
+      padding: 11px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.02);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all .15s;
+      text-align: left;
+      width: 100%;
+    }
+    .loc-btn:hover { border-color: rgba(0,255,106,0.25); }
+    .loc-name { font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 500; display: block; color: #ccc; }
+    .loc-city { font-size: 9px; color: var(--muted); display: block; margin-top: 1px; letter-spacing: 1px; text-transform: uppercase; }
+    .loc-tag { font-size: 10px; color: var(--muted); text-align: right; white-space: nowrap; }
+    .loc-btn.on { border-color: var(--lime); background: rgba(0,255,106,0.04); }
+    .loc-btn.on .loc-name { color: var(--lime); }
+
+    /* Location toggle */
+    .loc-toggle { display: flex; gap: 6px; margin-bottom: 10px; }
+    .loc-filter {
+      padding: 5px 10px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--muted);
+      font-family: 'Oswald', sans-serif;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all .15s;
+    }
+    .loc-filter.on { border-color: var(--lime); color: var(--lime); background: rgba(0,255,106,0.05); }
+  </style>
+</head>
+<body>
+<div class="site">
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <span class="ticker-inner">
+      ★ TENNIS LESSONS &nbsp;&nbsp;·&nbsp;&nbsp; NORTH COUNTY SAN DIEGO &nbsp;&nbsp;·&nbsp;&nbsp; CARLSBAD · OCEANSIDE · ENCINITAS &nbsp;&nbsp;·&nbsp;&nbsp; 30+ YEARS EXPERIENCE &nbsp;&nbsp;·&nbsp;&nbsp; ALL SKILL LEVELS WELCOME &nbsp;&nbsp;·&nbsp;&nbsp; 2× PA STATE CHAMPION &nbsp;&nbsp;·&nbsp;&nbsp; USTA RATED 4.5 &nbsp;&nbsp;·&nbsp;&nbsp; ★ TENNIS LESSONS &nbsp;&nbsp;·&nbsp;&nbsp; NORTH COUNTY SAN DIEGO &nbsp;&nbsp;·&nbsp;&nbsp; CARLSBAD · OCEANSIDE · ENCINITAS &nbsp;&nbsp;·&nbsp;&nbsp; 30+ YEARS EXPERIENCE &nbsp;&nbsp;·&nbsp;&nbsp; ALL SKILL LEVELS WELCOME &nbsp;&nbsp;·&nbsp;&nbsp; 2× PA STATE CHAMPION &nbsp;&nbsp;·&nbsp;&nbsp; USTA RATED 4.5 &nbsp;&nbsp;·&nbsp;&nbsp;
+    </span>
+  </div>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-inner">
+      <div>
+        <div class="logo-eyebrow">North County San Diego</div>
+        <div class="logo-main">ACE TENNIS</div>
+        <div class="logo-sub">with Mark Moosburner</div>
+      </div>
+      <div class="header-badge">
+        <div class="badge-ring"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB BAR -->
+  <div class="tab-bar">
+    <button class="tab on" onclick="showTab('book')" id="tab-book">Book</button>
+    <button class="tab" onclick="showTab('profile')" id="tab-profile">Coach</button>
+    <button class="tab" onclick="showTab('contact')" id="tab-contact">Contact</button>
+  </div>
+
+  <!-- ════════════════ BOOK PAGE ════════════════ -->
+  <div class="page on" id="page-book">
+
+    <!-- STEP 1 -->
+    <div id="step1">
+      <div class="step-nav">
+        <div class="step-dots">
+          <div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        </div>
+        <span class="step-label">Step 1 of 4</span>
+      </div>
+
+      <div class="card">
+        <span class="step-tag">Who is the lesson for?</span>
+        <div class="age-grid">
+          <button class="age-btn" onclick="selectAge('Children','under 12')" id="age-Children">
+            <span class="age-label">Kids</span>
+            <span class="age-range">under 12</span>
+          </button>
+          <button class="age-btn" onclick="selectAge('Teens','ages 12–17')" id="age-Teens">
+            <span class="age-label">Teens</span>
+            <span class="age-range">ages 12–17</span>
+          </button>
+          <button class="age-btn" onclick="selectAge('Adults','18+')" id="age-Adults">
+            <span class="age-label">Adults</span>
+            <span class="age-range">18+</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="step-tag">Experience level</span>
+        <div class="level-row">
+          <div class="level-num" id="lvl-num">4</div>
+          <div>
+            <div class="level-name" id="lvl-name">Intermediate</div>
+            <div class="level-desc" id="lvl-desc">Consistent rallying, developing strategy and spin</div>
+          </div>
+        </div>
+        <input type="range" min="1" max="7" value="4" step="1" id="level-slider" oninput="updateLevel(this.value)">
+        <div class="slider-ticks">
+          <span class="tick">1</span><span class="tick">2</span><span class="tick">3</span>
+          <span class="tick">4</span><span class="tick">5</span><span class="tick">6</span><span class="tick">7</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="step-tag">Type of session</span>
+        <div class="type-grid">
+          <button class="type-btn" onclick="selectType('Private Lesson')" id="type-Private Lesson">
+            <span class="type-icon">🎾</span>
+            <span class="type-name">Private Lesson</span>
+            <span class="type-sub">Instruction & drills</span>
+          </button>
+          <button class="type-btn" onclick="selectType('Hitting Partner')" id="type-Hitting Partner">
+            <span class="type-icon">⚡</span>
+            <span class="type-name">Hitting Partner</span>
+            <span class="type-sub">Rally & match play</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <label class="form-label">Personal note (optional)</label>
+        <textarea class="form-input" id="personal-note" placeholder="Tell Mark about your goals, any injuries, what you'd like to focus on..."></textarea>
+      </div>
+
+      <button class="next-btn" onclick="goStep(2)">Continue &rarr;</button>
+    </div>
+
+    <!-- STEP 2 -->
+    <div id="step2" style="display:none">
+      <div class="step-nav">
+        <button class="back-btn" onclick="goStep(1)">&larr; Back</button>
+        <div class="step-dots">
+          <div class="dot"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div>
+        </div>
+        <span class="step-label">Step 2 of 4</span>
+      </div>
+
+      <div class="card">
+        <span class="step-tag">Select a court location</span>
+        <div class="loc-toggle">
+          <button class="loc-filter on" onclick="filterLoc('all', this)">All</button>
+          <button class="loc-filter" onclick="filterLoc('Carlsbad', this)">Carlsbad</button>
+          <button class="loc-filter" onclick="filterLoc('Oceanside', this)">Oceanside</button>
+          <button class="loc-filter" onclick="filterLoc('Encinitas', this)">Encinitas</button>
+        </div>
+        <div class="loc-list" id="loc-list">
+          <button class="loc-btn" onclick="selectLoc('Calavera Hills Community Park','Carlsbad')" id="loc-0" data-city="Carlsbad">
+            <div><span class="loc-name">Calavera Hills Comm. Park</span><span class="loc-city">Carlsbad, CA</span></div>
+            <span class="loc-tag">6 courts</span>
+          </button>
+          <button class="loc-btn" onclick="selectLoc('Poinsettia Park','Carlsbad')" id="loc-1" data-city="Carlsbad">
+            <div><span class="loc-name">Poinsettia Park</span><span class="loc-city">Carlsbad, CA</span></div>
+            <span class="loc-tag">8 courts</span>
+          </button>
+          <button class="loc-btn" onclick="selectLoc('Stagecoach Community Park','Carlsbad')" id="loc-2" data-city="Carlsbad">
+            <div><span class="loc-name">Stagecoach Community Park</span><span class="loc-city">Carlsbad, CA</span></div>
+            <span class="loc-tag">4 courts</span>
+          </button>
+          <button class="loc-btn" onclick="selectLoc('Luiseno Park','Oceanside')" id="loc-3" data-city="Oceanside">
+            <div><span class="loc-name">Luiseno Park</span><span class="loc-city">Oceanside, CA</span></div>
+            <span class="loc-tag">4 courts</span>
+          </button>
+          <button class="loc-btn" onclick="selectLoc('El Camino Memorial Park','Oceanside')" id="loc-4" data-city="Oceanside">
+            <div><span class="loc-name">El Camino Memorial Park</span><span class="loc-city">Oceanside, CA</span></div>
+            <span class="loc-tag">6 courts</span>
+          </button>
+          <button class="loc-btn" onclick="selectLoc('Oakcrest Community Park','Encinitas')" id="loc-5" data-city="Encinitas">
+            <div><span class="loc-name">Oakcrest Community Park</span><span class="loc-city">Encinitas, CA</span></div>
+            <span class="loc-tag">4 courts</span>
+          </button>
+          <button class="loc-btn" onclick="selectLoc('Leo Mullen Sports Park','Encinitas')" id="loc-6" data-city="Encinitas">
+            <div><span class="loc-name">Leo Mullen Sports Park</span><span class="loc-city">Encinitas, CA</span></div>
+            <span class="loc-tag">6 courts</span>
+          </button>
+        </div>
+      </div>
+
+      <button class="next-btn" onclick="goStep(3)">Continue &rarr;</button>
+    </div>
+
+    <!-- STEP 3 -->
+    <div id="step3" style="display:none">
+      <div class="step-nav">
+        <button class="back-btn" onclick="goStep(2)">&larr; Back</button>
+        <div class="step-dots">
+          <div class="dot"></div><div class="dot"></div><div class="dot on"></div><div class="dot"></div>
+        </div>
+        <span class="step-label">Step 3 of 4</span>
+      </div>
+
+      <div class="card">
+        <span class="step-tag">Pick a date</span>
+        <div class="day-scroll" id="day-scroll"></div>
+
+        <span class="step-tag">Duration</span>
+        <div class="dur-grid">
+          <button class="dur-btn" onclick="selectDur(1,60)" id="dur-1">
+            <span class="dur-hr">1 hour</span>
+            <span class="dur-price">$60</span>
+            <span class="dur-save">&nbsp;</span>
+          </button>
+          <button class="dur-btn" onclick="selectDur(2,100)" id="dur-2">
+            <span class="dur-hr">2 hours</span>
+            <span class="dur-price">$100</span>
+            <span class="dur-save">Best value</span>
+          </button>
+        </div>
+
+        <span class="step-tag">Preferred start time</span>
+        <div class="time-grid" id="time-grid"></div>
+      </div>
+
+      <button class="next-btn" onclick="goStep(4)">Continue &rarr;</button>
+    </div>
+
+    <!-- STEP 4 -->
+    <div id="step4" style="display:none">
+      <div class="step-nav">
+        <button class="back-btn" onclick="goStep(3)">&larr; Back</button>
+        <div class="step-dots">
+          <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot on"></div>
+        </div>
+        <span class="step-label">Step 4 of 4</span>
+      </div>
+
+      <div class="summary-box" id="summary-box"></div>
+
+      <div class="card">
+        <span class="step-tag">Your details</span>
+        <div class="form-group">
+          <label class="form-label">Full name</label>
+          <input class="form-input" type="text" id="inp-name" placeholder="Jane Smith" autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email address</label>
+          <input class="form-input" type="email" id="inp-email" placeholder="you@email.com" autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone number</label>
+          <input class="form-input" type="tel" id="inp-phone" placeholder="(555) 000-0000" autocomplete="tel">
+        </div>
+      </div>
+
+      <div class="notice">
+        ⚡ Your request goes directly to Mark at <strong>mark.moosburner@gmail.com</strong>. He'll confirm within 24 hours.
+      </div>
+
+      <button class="book-btn" onclick="submitBooking()" id="book-btn">Send Booking Request</button>
+
+      <div class="success-box" id="success-box">
+        <span class="success-icon">✅</span>
+        <div class="success-title">Request Sent!</div>
+        <div class="success-sub">
+          Mark will confirm your session at<br>
+          <span class="success-email">mark.moosburner@gmail.com</span><br>
+          within 24 hours. See you on the court!
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /page-book -->
+
+  <!-- ════════════════ COACH PAGE ════════════════ -->
+  <div class="page" id="page-profile">
+
+    <div class="profile-hero">
+      <div class="avatar">MM</div>
+      <div>
+        <div class="profile-name">Mark Moosburner</div>
+        <div class="profile-title">Tennis Coach &amp; Instructor</div>
+        <div class="profile-usta">USTA 4.5 &nbsp;·&nbsp; 30+ yrs experience</div>
+      </div>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-val">30+</div><div class="stat-lbl">Years Playing</div></div>
+      <div class="stat-card"><div class="stat-val">4.5</div><div class="stat-lbl">USTA Rating</div></div>
+      <div class="stat-card"><div class="stat-val">2×</div><div class="stat-lbl">PA State Champ</div></div>
+      <div class="stat-card"><div class="stat-val">All</div><div class="stat-lbl">Skill Levels</div></div>
+    </div>
+
+    <div class="card">
+      <div class="sec-label">About Mark</div>
+      <div class="bio-text">
+        Mark Moosburner has been playing competitive tennis for over 30 years, earning back-to-back Pennsylvania High School State Championship titles. A current USTA 4.5-rated player, Mark brings elite competitive experience to every session.<br><br>
+        Whether you're picking up a racket for the first time or sharpening your game for tournament play, Mark tailors every lesson to your level and goals. He works with all ages and skill levels, with deep expertise in both singles strategy and doubles positioning.
+      </div>
+      <div class="pill-list">
+        <span class="pill">Singles</span>
+        <span class="pill">Doubles</span>
+        <span class="pill">Beginners</span>
+        <span class="pill">Advanced</span>
+        <span class="pill">Kids &amp; Teens</span>
+        <span class="pill">Footwork</span>
+        <span class="pill">Serve &amp; Volley</span>
+        <span class="pill">Match Strategy</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="sec-label">Pricing</div>
+      <div class="pricing-row">
+        <div class="price-card">
+          <div class="price-big">$60</div>
+          <div class="price-hr">1 Hour</div>
+        </div>
+        <div class="price-card best">
+          <div class="price-big">$100</div>
+          <div class="price-hr">2 Hours</div>
+          <div class="price-tag">Best value</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /page-profile -->
+
+  <!-- ════════════════ CONTACT PAGE ════════════════ -->
+  <div class="page" id="page-contact">
+
+    <div class="sec-label" style="margin-bottom:16px">Get in touch</div>
+
+    <a class="contact-link" href="mailto:mark.moosburner@gmail.com">
+      <div class="contact-row">
+        <span class="contact-icon">✉️</span>
+        <div>
+          <span class="contact-lbl">Email</span>
+          <span class="contact-val">mark.moosburner@gmail.com</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="contact-link" href="tel:6106398959">
+      <div class="contact-row">
+        <span class="contact-icon">📞</span>
+        <div>
+          <span class="contact-lbl">Phone</span>
+          <span class="contact-val">(610) 639-8959</span>
+        </div>
+      </div>
+    </a>
+
+    <div class="contact-link">
+      <div class="contact-row">
+        <span class="contact-icon">📍</span>
+        <div>
+          <span class="contact-lbl">Service Area</span>
+          <span class="contact-val">Carlsbad · Oceanside · Encinitas, CA</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:18px">
+      <div class="sec-label">Send a message</div>
+      <div class="form-group">
+        <label class="form-label">Your name</label>
+        <input class="form-input" type="text" id="c-name" placeholder="Full name" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input class="form-input" type="email" id="c-email" placeholder="you@email.com" autocomplete="email">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Message</label>
+        <textarea class="form-input" id="c-msg" placeholder="Questions about lessons, availability, pricing..." style="min-height:90px"></textarea>
+      </div>
+      <button class="book-btn" onclick="sendContact()" id="contact-btn">Send Message</button>
+      <div class="success-box" id="contact-success">
+        <span class="success-icon">✅</span>
+        <div class="success-title">Message Sent!</div>
+        <div class="success-sub">Mark will reply at<br><span class="success-email">mark.moosburner@gmail.com</span></div>
+      </div>
+    </div>
+
+  </div><!-- /page-contact -->
+
+  <div class="footer">&copy; 2025 Mark Moosburner &mdash; Ace Tennis &mdash; North County San Diego</div>
+
+</div><!-- /site -->
+
+<script>
+  const levelData = {
+    1:{name:'Beginner',      desc:'Just starting out — learning grips, swing basics, and court rules'},
+    2:{name:'Novice',        desc:'Can rally short distances, building consistency and control'},
+    3:{name:'Developing',    desc:'Reliable groundstrokes, working on serve and footwork'},
+    4:{name:'Intermediate',  desc:'Consistent rallying, developing strategy and spin'},
+    5:{name:'Advanced',      desc:'Strong all-court game, competitive league or tournament play'},
+    6:{name:'Expert',        desc:'High-level competitive play, refined tactics and placement'},
+    7:{name:'Professional',  desc:'Elite tournament-level performance and match preparation'}
+  };
+
+  const timeSlots = ['7:00 AM','8:00 AM','9:00 AM','10:00 AM','11:00 AM','12:00 PM',
+                     '1:00 PM','2:00 PM','3:00 PM','4:00 PM','5:00 PM','6:00 PM'];
+
+  const locNames = [
+    'Calavera Hills Community Park','Poinsettia Park','Stagecoach Community Park',
+    'Luiseno Park','El Camino Memorial Park','Oakcrest Community Park','Leo Mullen Sports Park'
+  ];
+
+  let S = { age:'', ageRange:'', level:4, type:'', note:'', loc:'', city:'', day:'', dayLabel:'', dur:0, price:0, time:'' };
+
+  /* ── TABS ── */
+  function showTab(t) {
+    document.querySelectorAll('.tab').forEach(b => b.classList.remove('on'));
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('on'));
+    document.getElementById('tab-'+t).classList.add('on');
+    document.getElementById('page-'+t).classList.add('on');
+    window.scrollTo(0,0);
+  }
+
+  /* ── STEP 1 ── */
+  function selectAge(a, r) {
+    document.querySelectorAll('.age-btn').forEach(b => b.classList.remove('on'));
+    document.getElementById('age-'+a).classList.add('on');
+    S.age = a; S.ageRange = r;
+  }
+  function updateLevel(v) {
+    v = parseInt(v); S.level = v;
+    document.getElementById('lvl-num').textContent  = v;
+    document.getElementById('lvl-name').textContent = levelData[v].name;
+    document.getElementById('lvl-desc').textContent = levelData[v].desc;
+  }
+  function selectType(t) {
+    document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('on'));
+    document.getElementById('type-'+t).classList.add('on');
+    S.type = t;
+  }
+
+  /* ── STEP 2 ── */
+  function selectLoc(name, city) {
+    document.querySelectorAll('.loc-btn').forEach(b => b.classList.remove('on'));
+    const idx = locNames.indexOf(name);
+    document.getElementById('loc-'+idx).classList.add('on');
+    S.loc = name; S.city = city;
+  }
+  function filterLoc(city, btn) {
+    document.querySelectorAll('.loc-filter').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    document.querySelectorAll('.loc-btn').forEach(b => {
+      b.style.display = (city === 'all' || b.dataset.city === city) ? 'flex' : 'none';
+    });
+  }
+
+  /* ── STEP 3 ── */
+  function buildDays() {
+    const scroll = document.getElementById('day-scroll');
+    scroll.innerHTML = '';
+    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const now = new Date();
+    for (let i = 1; i <= 14; i++) {
+      const d = new Date(now);
+      d.setDate(now.getDate() + i);
+      const label = days[d.getDay()] + ', ' + months[d.getMonth()] + ' ' + d.getDate();
+      const btn = document.createElement('button');
+      btn.className = 'day-btn';
+      btn.innerHTML = `<span class="day-dname">${days[d.getDay()]}</span><span class="day-dnum">${d.getDate()}</span><span class="day-mon">${months[d.getMonth()]}</span>`;
+      btn.onclick = (function(lbl) {
+        return function() {
+          document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('on'));
+          btn.classList.add('on');
+          S.day = lbl; S.dayLabel = lbl;
+        };
+      })(label);
+      scroll.appendChild(btn);
+    }
+  }
+
+  function buildTimes() {
+    const grid = document.getElementById('time-grid');
+    grid.innerHTML = '';
+    timeSlots.forEach(t => {
+      const btn = document.createElement('button');
+      btn.className = 'time-btn';
+      btn.textContent = t;
+      btn.onclick = function() {
+        document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('on'));
+        btn.classList.add('on');
+        S.time = t;
+      };
+      grid.appendChild(btn);
+    });
+  }
+
+  function selectDur(hrs, price) {
+    document.querySelectorAll('.dur-btn').forEach(b => b.classList.remove('on'));
+    document.getElementById('dur-'+hrs).classList.add('on');
+    S.dur = hrs; S.price = price;
+  }
+
+  /* ── STEP 4 ── */
+  function buildSummary() {
+    S.note = document.getElementById('personal-note').value.trim();
+    document.getElementById('summary-box').innerHTML =
+      row('Who',      S.age + ' — Level ' + S.level + ' (' + levelData[S.level].name + ')') +
+      row('Type',     S.type) +
+      row('Location', S.loc + ', ' + S.city) +
+      row('When',     S.dayLabel + ' — ' + S.time) +
+      row('Duration', S.dur + ' hour' + (S.dur > 1 ? 's' : '')) +
+      (S.note ? row('Note', S.note) : '') +
+      '<div class="summary-row"><span class="s-label">Total</span><span class="price-total">$' + S.price + '</span></div>';
+  }
+  function row(lbl, val) {
+    return `<div class="summary-row"><span class="s-label">${lbl}</span><span class="s-val">${val}</span></div>`;
+  }
+
+  /* ── NAVIGATION ── */
+  function goStep(n) {
+    if (n === 2 && !S.age)  { alert('Please select who the lesson is for.'); return; }
+    if (n === 2 && !S.type) { alert('Please select Private Lesson or Hitting Partner.'); return; }
+    if (n === 3 && !S.loc)  { alert('Please select a court location.'); return; }
+    if (n === 4 && !S.day)  { alert('Please select a date.'); return; }
+    if (n === 4 && !S.dur)  { alert('Please select a duration.'); return; }
+    if (n === 4 && !S.time) { alert('Please select a preferred time.'); return; }
+    for (let i = 1; i <= 4; i++) {
+      const el = document.getElementById('step'+i);
+      if (el) el.style.display = (i === n) ? 'block' : 'none';
+    }
+    if (n === 3) { buildDays(); buildTimes(); }
+    if (n === 4) { buildSummary(); }
+    window.scrollTo(0, 0);
+  }
+
+  /* ── SUBMIT BOOKING ── */
+  function submitBooking() {
+    const name  = document.getElementById('inp-name').value.trim();
+    const email = document.getElementById('inp-email').value.trim();
+    const phone = document.getElementById('inp-phone').value.trim();
+    if (!name || !email || !phone) { alert('Please fill in your name, email, and phone number.'); return; }
+    const subject = encodeURIComponent('Tennis Lesson Booking — ' + name);
+    const body = encodeURIComponent(
+      'BOOKING REQUEST\n\n' +
+      'From: ' + name + '\nEmail: ' + email + '\nPhone: ' + phone + '\n\n' +
+      'Age Group: ' + S.age + ' (' + S.ageRange + ')\n' +
+      'Experience Level: ' + S.level + ' — ' + levelData[S.level].name + '\n' +
+      'Session Type: ' + S.type + '\n' +
+      'Location: ' + S.loc + ', ' + S.city + '\n' +
+      'Date: ' + S.dayLabel + '\n' +
+      'Time: ' + S.time + '\n' +
+      'Duration: ' + S.dur + ' hour' + (S.dur > 1 ? 's' : '') + '\n' +
+      'Total: $' + S.price +
+      (S.note ? '\n\nPersonal Note:\n' + S.note : '')
+    );
+    window.location.href = 'mailto:mark.moosburner@gmail.com?subject=' + subject + '&body=' + body;
+    document.getElementById('book-btn').style.display = 'none';
+    document.getElementById('success-box').style.display = 'block';
+  }
+
+  /* ── CONTACT FORM ── */
+  function sendContact() {
+    const name  = document.getElementById('c-name').value.trim();
+    const email = document.getElementById('c-email').value.trim();
+    const msg   = document.getElementById('c-msg').value.trim();
+    if (!name || !email || !msg) { alert('Please fill in all fields.'); return; }
+    const subject = encodeURIComponent('Tennis Inquiry from ' + name);
+    const body = encodeURIComponent('From: ' + name + '\nEmail: ' + email + '\n\n' + msg);
+    window.location.href = 'mailto:mark.moosburner@gmail.com?subject=' + subject + '&body=' + body;
+    document.getElementById('contact-btn').style.display = 'none';
+    document.getElementById('contact-success').style.display = 'block';
+  }
+</script>
+</body>
+</html>
